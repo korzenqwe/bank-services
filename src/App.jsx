@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "./styles/app.css";
+import MainPage from "./pages/MainPage";
 import Credit from "./pages/Credit";
 import Deposit from "./pages/Deposit";
 import Exchange from "./pages/Exchange";
@@ -16,7 +17,7 @@ function App() {
         </div>
       </div>
       <Routes>
-        <Route path="/" element={<Credit />}></Route>
+        <Route path="/" element={<MainPage />}></Route>
         <Route path="/credit" element={<Credit />}></Route>
         <Route path="/deposit" element={<Deposit />}></Route>
         <Route path="/exchange" element={<Exchange />}></Route>
