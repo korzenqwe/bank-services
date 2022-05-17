@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  text-align: left;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+
+.navbar {
+  height: 60px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3em;
+  background-color: rgb(225, 225, 225);
+} 
+
+.navbar__links {
+  background-color: rgb(225, 225, 225);
+}
+
+a {
+  background-color: rgb(225, 225, 225);
+  color: rgb(53, 53, 53);
+  text-decoration: none;
+  display: inline-flex;
+  margin: 0 2em;
+}
+
+.workplace {
+  display: flex;
+  justify-content: center;
+  color: rgb(53, 53, 53);
+}
