@@ -1,0 +1,110 @@
+import React from "react";
+import "../styles/credit.css";
+
+const CreditInputs = () => {
+  return (
+    <div className="credit-calculator__fields">
+      <div className="credit-calculator__field">
+        <div className="credit-calculator__top">
+          <label
+            className="credit-calculator__label"
+            htmlFor="calculator-input-sum"
+          >
+            Сумма
+          </label>
+          <input
+            type="text"
+            id="calculator-input-sum"
+            className="credit-calculator__input"
+            name="sum"
+            defaultValue={3000000}
+            data-bind="calculator-range-sum"
+            disabled={true}
+          />
+        </div>
+        <input
+          id="calculator-range-sum"
+          className="styled-slider slider-progress range credit-calculator__range"
+          type="range"
+          data-bind="calculator-input-sum"
+          min={0}
+          max={30000000}
+          step={100}
+          defaultValue={3000000}
+        />
+        <div className="credit-calculator__caption">
+          <span>0 ₽</span>
+          <span>30 000 000 ₽</span>
+        </div>
+      </div>
+      <div className="credit-calculator__field">
+        <div className="credit-calculator__top">
+          <label
+            className="credit-calculator__label"
+            htmlFor="calculator-input-term"
+          >
+            Срок (мес)
+          </label>
+          <input
+            type="text"
+            id="calculator-input-term"
+            className="credit-calculator__input"
+            name="term"
+            defaultValue={60}
+            data-bind="calculator-range-term"
+            disabled={true}
+          />
+        </div>
+        <input
+          id="calculator-range-term"
+          className="styled-slider slider-progress range credit-calculator__range"
+          type="range"
+          data-bind="calculator-input-term"
+          min={1}
+          max={180}
+          step={1}
+          defaultValue={60}
+        />
+        <div className="credit-calculator__caption">
+          <span>1 мес</span>
+          <span>180 мес</span>
+        </div>
+      </div>
+      <div className="credit-calculator__field">
+        <div className="credit-calculator__top">
+          <label
+            className="credit-calculator__label"
+            htmlFor="calculator-input-rate"
+          >
+            Ставка
+          </label>
+          <input
+            type="text"
+            id="calculator-input-rate"
+            className="credit-calculator__input"
+            name="rate"
+            defaultValue={10}
+            data-bind="calculator-range-rate"
+            disabled={true}
+          />
+        </div>
+        <input
+          id="calculator-range-rate"
+          className="styled-slider slider-progress range credit-calculator__range"
+          type="range"
+          data-bind="calculator-input-rate"
+          min={0}
+          max={40}
+          step={0.1}
+          defaultValue={10}
+        />
+        <div className="credit-calculator__caption">
+          <span>0 %</span>
+          <span>40 %</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CreditInputs;

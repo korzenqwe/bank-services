@@ -18,7 +18,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
-        <Route path="/credit" element={<Credit />}></Route>
+        <Route path="/credit" element={<Credit />}></Route> 
         <Route path="/deposit" element={<Deposit />}></Route>
         <Route path="/exchange" element={<Exchange />}></Route>
       </Routes>
