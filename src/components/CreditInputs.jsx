@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/credit.css";
 
-const CreditInputs = () => {
+const CreditInputs = ({ creditSum, changeCreditSum, creditTerm, changeCreditTerm, creditRate, changeCreditRate }) => {
   return (
     <div className="credit-calculator__fields">
       <div className="credit-calculator__field">
@@ -17,7 +17,8 @@ const CreditInputs = () => {
             id="calculator-input-sum"
             className="credit-calculator__input"
             name="sum"
-            defaultValue={3000000}
+            // defaultValue={3000000}
+            value={creditSum}
             data-bind="calculator-range-sum"
             disabled={true}
           />
@@ -30,7 +31,9 @@ const CreditInputs = () => {
           min={0}
           max={30000000}
           step={100}
-          defaultValue={3000000}
+          // defaultValue={3000000}
+          value={creditSum}
+          onChange={(e) => changeCreditSum(e)}
         />
         <div className="credit-calculator__caption">
           <span>0 ₽</span>
@@ -50,7 +53,8 @@ const CreditInputs = () => {
             id="calculator-input-term"
             className="credit-calculator__input"
             name="term"
-            defaultValue={60}
+            // defaultValue={60}
+            value={creditTerm}
             data-bind="calculator-range-term"
             disabled={true}
           />
@@ -63,7 +67,9 @@ const CreditInputs = () => {
           min={1}
           max={180}
           step={1}
-          defaultValue={60}
+          // defaultValue={60}
+          value={creditTerm}
+          onChange={(e) => changeCreditTerm(e)}
         />
         <div className="credit-calculator__caption">
           <span>1 мес</span>
@@ -83,7 +89,8 @@ const CreditInputs = () => {
             id="calculator-input-rate"
             className="credit-calculator__input"
             name="rate"
-            defaultValue={10}
+            // defaultValue={10}
+            value={creditRate}
             data-bind="calculator-range-rate"
             disabled={true}
           />
@@ -96,7 +103,9 @@ const CreditInputs = () => {
           min={0}
           max={40}
           step={0.1}
-          defaultValue={10}
+          // defaultValue={10}
+          value={creditRate}
+          onChange={(e) => changeCreditRate(e)}
         />
         <div className="credit-calculator__caption">
           <span>0 %</span>

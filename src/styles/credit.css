@@ -1,6 +1,6 @@
 .workplace1 {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 #credit {
@@ -36,7 +36,7 @@ input[type="hidden" i] {
 }
 
 #calculator-input-sum {
-  width: 6.75em;
+  width: 8.75em;
   padding: 0.2em 0.8em;
   border: none;
   border-radius: 5px;
@@ -49,7 +49,7 @@ input[type="hidden" i] {
 }
 
 #calculator-input-term{
-  width: 2.75em;
+  width: 5em;
   padding: 0.2em 0.8em;
   border: none;
   border-radius: 5px;
@@ -62,7 +62,7 @@ input[type="hidden" i] {
 }
 
 #calculator-input-rate{
-  width: 2.75em;
+  width: 5em;
   padding: 0.2em 0.8em;
   border: none;
   border-radius: 5px;
