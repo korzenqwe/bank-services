@@ -1,6 +1,17 @@
 import React from "react";
 
-const CreditCircle = () => {
+const CreditCircle = ({
+  creditSum,
+  creditTerm,
+  creditRate,
+  total,
+  overpayment,
+}) => {
+  const PI = 3.14159265;
+  const circleRadius = document
+    .querySelector("#credit-calculator__result-line")
+  const circleLength = circleRadius * PI * 2;
+
   return (
     <div className="credit-calculator__result-wrapper">
       <svg
@@ -34,9 +45,7 @@ const CreditCircle = () => {
           y="160"
           textAnchor="middle"
           className="credit-calculator__result-value"
-        >
-          0 ₽
-        </text>
+        ></text>
         <text
           x="50%"
           y="180"

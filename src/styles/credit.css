@@ -81,30 +81,24 @@ input[type="hidden" i] {
 .range {
   width: 100%;
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-}
-
-.range {
   height: 4px;
   border-radius: 4px;
-  background-color: var(--orange);
+}
+
+#calculator-range-sum {
+  background: linear-gradient(to right,  var(--orange) 0%,var(--orange) 10%, rgba(0, 0, 0, 0.1) 10%,rgba(0, 0, 0, 0.1) 100%);
+}
+
+#calculator-range-term {
+  background: linear-gradient(to right,  var(--orange) 0%,var(--orange) 33%, rgba(0, 0, 0, 0.1) 33%,rgba(0, 0, 0, 0.1) 100%);
+}
+
+#calculator-range-rate {
+  background: linear-gradient(to right,  var(--orange) 0%,var(--orange) 25%, rgba(0, 0, 0, 0.1) 25%,rgba(0, 0, 0, 0.1) 100%);
 }
 
 .range::-webkit-slider-thumb {
-  width: 15px;
-  height: 15px;
-  border: none;
-  border-radius: 50%;
-  background-color: var(--orange);
-  box-shadow: 0 0 0 3px var(--white), 0 0 0 5px var(--orange);
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.range::-moz-range-thumb {
   width: 15px;
   height: 15px;
   border: none;
