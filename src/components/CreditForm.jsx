@@ -9,14 +9,44 @@ const CreditForm = () => {
   const [creditRate, setCreditRate] = useState("10");
   const total = document.querySelector("input[name=total]");
   const overpayment = document.querySelector("input[name=overpayment]");
+  const chSum = document.querySelector("input[name=sum]");
+  const chTerm = document.querySelector("input[name=term]");
+  const chRate = document.querySelector("input[name=rate]");
+
+  const changeCreditSumInput = (e) => {
+    if (e.target.value > 30000000) {
+      setCreditSum(30000000);
+    } else if (e.target.value < 0) {
+      setCreditSum(0);
+    } else setCreditSum(e.target.value);
+    let value = e.target.value;
+    let min = chSum.min;
+    let max = chSum.max;
+    let percentage = ((value - min) / (max - min)) * 100;
+    chSum.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+  };
 
   const changeCreditSum = (e) => {
     setCreditSum(e.target.value);
+    console.log(chSum);
     let value = e.target.value;
     let min = e.target.min;
     let max = e.target.max;
     let percentage = ((value - min) / (max - min)) * 100;
     e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+  };
+
+  const changeCreditTermInput = (e) => {
+    if (e.target.value > 180) {
+      setCreditTerm(180);
+    } else if (e.target.value < 0) {
+      setCreditTerm(0);
+    } else setCreditTerm(e.target.value);
+    let value = e.target.value;
+    let min = chTerm.min;
+    let max = chTerm.max;
+    let percentage = ((value - min) / (max - min)) * 100;
+    chTerm.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
   const changeCreditTerm = (e) => {
@@ -26,6 +56,19 @@ const CreditForm = () => {
     let max = e.target.max;
     let percentage = ((value - min) / (max - min)) * 100;
     e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+  };
+
+  const changeCreditRateInput = (e) => {
+    if (e.target.value > 40) {
+      setCreditRate(40);
+    } else if (e.target.value < 0) {
+      setCreditRate(0);
+    } else setCreditRate(e.target.value);
+    let value = e.target.value;
+    let min = chRate.min;
+    let max = chRate.max;
+    let percentage = ((value - min) / (max - min)) * 100;
+    chRate.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
   const changeCreditRate = (e) => {
@@ -43,9 +86,12 @@ const CreditForm = () => {
       name="credit-calculator-form"
       data-calculator-type="credit"
     >
-      <input type="hidden" name="total" value="0" />
+      <input type="hidden" name="total" value={creditSum * creditRate} />
       <input type="hidden" name="overpayment" value="0" />
       <CreditInputs
+        changeCreditSumInput={changeCreditSumInput}
+        changeCreditTermInput={changeCreditTermInput}
+        changeCreditRateInput={changeCreditRateInput}
         changeCreditSum={changeCreditSum}
         creditSum={creditSum}
         creditTerm={creditTerm}

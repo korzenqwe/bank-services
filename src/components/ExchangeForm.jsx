@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ExchangeTitle from "./ExchangeTitle";
 import Courses from "../components/Courses";
 import Selects from "../components/Selects";
 import ExchangeInputs from "../components/ExchangeInputs";
 
 const ExchangeForm = () => {
-  let zero;
   const [moneyInput, setMoneyInput] = useState("");
   const [value, setValue] = useState("");
   const [selectGive, setSelectGive] = useState("RUB");
@@ -31,9 +30,10 @@ const ExchangeForm = () => {
   useEffect(() => {
     Object.entries(rates).map((el) => {
       if (selectGive === el[0]) {
-        zero = ((moneyInput * rates[selectGive]) / rates[selectTake]).toFixed(
-          4
-        );
+        let zero = (
+          (moneyInput * rates[selectGive]) /
+          rates[selectTake]
+        ).toFixed(4);
         if (zero % 1 === 0) {
           setValue(Math.round(zero));
         } else {
@@ -41,7 +41,7 @@ const ExchangeForm = () => {
         }
       }
     });
-  }, [moneyInput, selectGive, selectTake]);
+  }, [moneyInput, rates, selectGive, selectTake]);
 
   const changeSelectGive = (e) => {
     setSelectGive(e.target.value);
@@ -67,7 +67,7 @@ const ExchangeForm = () => {
         moneyInput={moneyInput}
         setMoneyInput={setMoneyInput}
         value={value}
-      />  
+      />
     </>
   );
 };

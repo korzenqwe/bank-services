@@ -4,10 +4,13 @@ import "../styles/credit.css";
 const CreditInputs = ({
   creditSum,
   changeCreditSum,
+  changeCreditSumInput,
+  changeCreditTermInput,
+  changeCreditRateInput,
   creditTerm,
   changeCreditTerm,
   creditRate,
-  changeCreditRate
+  changeCreditRate,
 }) => {
   return (
     <div className="credit-calculator__fields">
@@ -20,19 +23,20 @@ const CreditInputs = ({
             Сумма
           </label>
           <input
-            type="text"
+            type="number"
             id="calculator-input-sum"
             className="credit-calculator__input"
-            name="sum"
             value={creditSum}
-            data-bind="calculator-range-sum"
-            disabled={true}
+            onChange={(e) => {
+              changeCreditSumInput(e);
+            }}
           />
         </div>
         <input
           id="calculator-range-sum"
-          className="left right range credit-calculator__range"
+          className="range credit-calculator__range"
           type="range"
+          name="sum"
           data-bind="calculator-input-sum"
           min={0}
           max={30000000}
@@ -56,19 +60,19 @@ const CreditInputs = ({
             Срок (мес)
           </label>
           <input
-            type="text"
+            type="number"
             id="calculator-input-term"
             className="credit-calculator__input"
-            name="term"
             value={creditTerm}
+            onChange={(e) => changeCreditTermInput(e)}
             data-bind="calculator-range-term"
-            disabled={true}
           />
         </div>
         <input
           id="calculator-range-term"
           className="styled-slider slider-progress range credit-calculator__range"
           type="range"
+          name="term"
           data-bind="calculator-input-term"
           min={1}
           max={180}
@@ -90,20 +94,19 @@ const CreditInputs = ({
             Ставка
           </label>
           <input
-            type="text"
+            type="number"
             id="calculator-input-rate"
             className="credit-calculator__input"
-            name="rate"
             value={creditRate}
+            onChange={(e) => changeCreditRateInput(e)}
             data-bind="calculator-range-rate"
-            disabled={true}
           />
         </div>
         <input
           id="calculator-range-rate"
           className="styled-slider slider-progress range credit-calculator__range"
           type="range"
-          data-bind="calculator-input-rate"
+          name="rate"
           min={0}
           max={40}
           step={0.1}
