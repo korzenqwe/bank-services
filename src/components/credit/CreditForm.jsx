@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import CreditInputs from "./CreditInputs";
 import CreditCircle from "./CreditCircle";
-import "../styles/credit.css";
+import CreditInfo from "./CreditInfo";
+import "./credit.css";
 
 const CreditForm = () => {
   const [creditSum, setCreditSum] = useState("3000000");
@@ -14,7 +15,7 @@ const CreditForm = () => {
   const chRate = document.querySelector("input[name=rate]");
 
   const changeCreditSumInput = (e) => {
-    if (e.target.value > 30000000) {
+    if (e.target.value >= 30000000) {
       setCreditSum(30000000);
     } else if (e.target.value < 0) {
       setCreditSum(0);
@@ -28,7 +29,6 @@ const CreditForm = () => {
 
   const changeCreditSum = (e) => {
     setCreditSum(e.target.value);
-    console.log(chSum);
     let value = e.target.value;
     let min = e.target.min;
     let max = e.target.max;
@@ -37,7 +37,7 @@ const CreditForm = () => {
   };
 
   const changeCreditTermInput = (e) => {
-    if (e.target.value > 180) {
+    if (e.target.value >= 180) {
       setCreditTerm(180);
     } else if (e.target.value < 0) {
       setCreditTerm(0);
@@ -59,7 +59,7 @@ const CreditForm = () => {
   };
 
   const changeCreditRateInput = (e) => {
-    if (e.target.value > 40) {
+    if (e.target.value >= 40) {
       setCreditRate(40);
     } else if (e.target.value < 0) {
       setCreditRate(0);
@@ -80,14 +80,26 @@ const CreditForm = () => {
     e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
+  const percent = creditRate / 100 / 12;
+  const monthPayment =
+    percent === 0
+      ? creditSum / creditTerm
+      : creditSum *
+        (percent + percent / (Math.pow(1 + percent, creditTerm) - 1));
+  const totalSum =
+    creditRate === 0
+      ? Math.round(Number(creditSum))
+      : Math.round(Number(monthPayment * creditTerm));
+  const overpaymentSum = String(totalSum - creditSum);
+
   return (
     <form
       className="credit-calculator__form"
       name="credit-calculator-form"
       data-calculator-type="credit"
     >
-      <input type="hidden" name="total" value={creditSum * creditRate} />
-      <input type="hidden" name="overpayment" value="0" />
+      {/* <input type="hidden" name="total" value={totalSum} />
+      <input type="hidden" name="overpayment" value={overpaymentSum} /> */}
       <CreditInputs
         changeCreditSumInput={changeCreditSumInput}
         changeCreditTermInput={changeCreditTermInput}
@@ -99,42 +111,8 @@ const CreditForm = () => {
         creditRate={creditRate}
         changeCreditRate={changeCreditRate}
       />
-      <CreditCircle
-        creditSum={creditSum}
-        creditTerm={creditTerm}
-        creditRate={creditRate}
-        total={total}
-        overpayment={overpayment}
-      />
-      <div className="credit-calculator-info">
-        <ul className="credit-calculator-info__list">
-          <li>
-            Оплатить до: 
-            <span className="credit-calculator-info__value credit-calculator-info__value--date"></span>
-          </li>
-          <li>
-            Сумма кредита: 
-            <span className="credit-calculator-info__value credit-calculator-info__value--sum">
-              0 ₽
-            </span>
-          </li>
-          <li>
-            Переплата: 
-            <span className="credit-calculator-info__value credit-calculator-info__value--overpayment">
-              0 ₽
-            </span>
-          </li>
-        </ul>
-        <div className="credit-calculator-info__comission">
-          <h3 className="credit-calculator-info__comission-title">
-            Без комиссии
-          </h3>
-          <p className="credit-calculator-info__comission-text">
-            Дополнительные комиссии могут быть начислены в случае
-            несвоевременного погашения задолженности
-          </p>
-        </div>
-      </div>
+      <CreditCircle creditSum={creditSum} total={totalSum} />
+      <CreditInfo />
     </form>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputTo = ({value}) => {
+const InputTo = ({ value }) => {
   return (
     <div className="col">
       <input

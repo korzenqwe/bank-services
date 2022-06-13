@@ -1,8 +1,13 @@
 import React from "react";
-import SelectFrom from "../components/SelectFrom";
-import SelectTo from "../components/SelectTo";
+import SelectFrom from "./SelectFrom";
+import SelectTo from "./SelectTo";
 
-const Selects = ({changeSelectGive, selectGive, changeSelectTake, selectTake}) => {
+const Selects = ({
+  changeSelectGive,
+  selectGive,
+  changeSelectTake,
+  selectTake,
+}) => {
   return (
     <div className="row mb-1">
       <SelectFrom changeSelectGive={changeSelectGive} selectGive={selectGive} />

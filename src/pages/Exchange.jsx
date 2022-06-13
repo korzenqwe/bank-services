@@ -1,6 +1,6 @@
 import React from "react";
-import ExchangeForm from "../components/ExchangeForm";
-import "../styles/exchange.css";
+import ExchangeForm from "../components/exchange/ExchangeForm";
+import "../components/exchange/exchange.css";
 
 const Exchange = () => {
   return (

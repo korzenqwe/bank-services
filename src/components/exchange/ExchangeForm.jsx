@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ExchangeTitle from "./ExchangeTitle";
-import Courses from "../components/Courses";
-import Selects from "../components/Selects";
-import ExchangeInputs from "../components/ExchangeInputs";
+import Courses from "./Courses";
+import Selects from "./Selects";
+import ExchangeInputs from "./ExchangeInputs";
 
 const ExchangeForm = () => {
   const [moneyInput, setMoneyInput] = useState("");
@@ -40,8 +40,9 @@ const ExchangeForm = () => {
           setValue(zero);
         }
       }
+      return [moneyInput, rates, selectGive, selectTake];
     });
-  }, [moneyInput, rates, selectGive, selectTake]);
+  });
 
   const changeSelectGive = (e) => {
     setSelectGive(e.target.value);

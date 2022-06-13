@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const CreditCircle = ({
-  creditSum,
-  creditTerm,
-  creditRate,
-  total,
-  overpayment,
-}) => {
-  const PI = 3.14159265;
-  const circleRadius = document
-    .querySelector("#credit-calculator__result-line")
-  const circleLength = circleRadius * PI * 2;
+const CreditCircle = ({ creditSum, total }) => {
+  useEffect(() => {
+    const PI = 3.14159265;
+    const circleRadius = document
+      .getElementById("credit-calculator__result-line")
+      .getAttribute("r");
+    const resultLine = document.getElementById(
+      "credit-calculator__result-line"
+    );
+    const circleLength = circleRadius * PI * 2;
+    const strokeLength = (creditSum * circleLength) / total;
+    resultLine.setAttribute("stroke-dasharray", `${strokeLength} 882`);
+  }, [creditSum, total]);
 
   return (
     <div className="credit-calculator__result-wrapper">
@@ -23,7 +25,7 @@ const CreditCircle = ({
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle
-          r="120"
+          r="140"
           cx="50%"
           cy="50%"
           stroke="#23319D"
@@ -32,12 +34,11 @@ const CreditCircle = ({
         <circle
           className="credit-calculator__result-line"
           id="credit-calculator__result-line"
-          r="120"
+          r="140"
           cx="50%"
           cy="50%"
           stroke="#FFA800"
           strokeWidth="50"
-          strokeDasharray="0 882"
           strokeLinecap="round"
         ></circle>
         <text
@@ -52,7 +53,7 @@ const CreditCircle = ({
           textAnchor="middle"
           className="credit-calculator__result-text"
         >
-          Общая сумма кредита
+          Общая сумма кредита <br /> {total}
         </text>
       </svg>
     </div>

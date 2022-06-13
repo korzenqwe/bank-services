@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/exchange.css"
+import "./exchange.css";
 
 const Courses = (rates) => {
   return (

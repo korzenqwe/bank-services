@@ -3,9 +3,7 @@ import React from "react";
 const CreditPayment = () => {
   return (
     <section className="carlculator__table-result">
-      <h3 className="calculator__h2">
-        График платежей
-      </h3>
+      <h3 className="calculator__h2">График платежей</h3>
       <div className="table-wrapper table-wrapper--secondary">
         <table className="credits-offers__table">
           <thead className="credit-offers__thead">

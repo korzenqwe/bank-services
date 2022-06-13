@@ -1,6 +1,6 @@
 import React from "react";
 
-const SelectFrom = ({selectGive, changeSelectGive}) => {
+const SelectFrom = ({ selectGive, changeSelectGive }) => {
   return (
     <div className="col">
       <label htmlFor="name">Отдаю:</label>

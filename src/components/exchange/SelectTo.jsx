@@ -1,6 +1,6 @@
 import React from "react";
 
-  const SelectTo = ({selectTake, changeSelectTake}) => {
+const SelectTo = ({ selectTake, changeSelectTake }) => {
   return (
     <div className="col">
       <label htmlFor="name">Получаю:</label>

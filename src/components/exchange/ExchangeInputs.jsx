@@ -1,15 +1,13 @@
 import React from "react";
-import InputForm from "../components/InputFrom";
-import InputTo from "../components/InputTo";
+import InputForm from "./InputFrom";
+import InputTo from "./InputTo";
 
 const ExchangeInputs = ({ moneyInput, setMoneyInput, value }) => {
   return (
     <div className="row">
-
       <InputForm moneyInput={moneyInput} setMoneyInput={setMoneyInput} />
 
       <InputTo value={value} />
-
     </div>
   );
 };
