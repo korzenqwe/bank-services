@@ -46,14 +46,16 @@ const CreditCircle = ({ creditSum, total }) => {
           y="160"
           textAnchor="middle"
           className="credit-calculator__result-value"
-        ></text>
+        >
+          {total.toLocaleString()}
+        </text>
         <text
           x="50%"
           y="180"
           textAnchor="middle"
           className="credit-calculator__result-text"
         >
-          Общая сумма кредита <br /> {total}
+          Общая сумма кредита
         </text>
       </svg>
     </div>

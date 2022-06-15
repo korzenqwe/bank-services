@@ -1,6 +1,7 @@
 import React from "react";
 import CreditForm from "../components/credit/CreditForm";
 import CreditPayment from "../components/credit/CreditPayment";
+import "../components/credit/credit.css";
 
 const Credit = () => {
   return (

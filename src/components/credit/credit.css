@@ -87,15 +87,15 @@ input[type="hidden" i] {
 }
 
 #calculator-range-sum {
-  background: linear-gradient(to right,  var(--orange) 0%,var(--orange) 10%, rgba(0, 0, 0, 0.1) 10%,rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(to right,  #ffa800 0%,#ffa800 10%, rgba(0, 0, 0, 0.1) 10%,rgba(0, 0, 0, 0.1) 100%);
 }
 
 #calculator-range-term {
-  background: linear-gradient(to right,  var(--orange) 0%,var(--orange) 33%, rgba(0, 0, 0, 0.1) 33%,rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(to right,  #ffa800 0%,#ffa800 33%, rgba(0, 0, 0, 0.1) 33%,rgba(0, 0, 0, 0.1) 100%);
 }
 
 #calculator-range-rate {
-  background: linear-gradient(to right,  var(--orange) 0%,var(--orange) 25%, rgba(0, 0, 0, 0.1) 25%,rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(to right,  #ffa800 0%,#ffa800 25%, rgba(0, 0, 0, 0.1) 25%,rgba(0, 0, 0, 0.1) 100%);
 }
 
 .range::-webkit-slider-thumb {
@@ -103,8 +103,8 @@ input[type="hidden" i] {
   height: 15px;
   border: none;
   border-radius: 50%;
-  background-color: var(--orange);
-  box-shadow: 0 0 0 3px var(--white), 0 0 0 5px var(--orange);
+  background-color: #ffa800;
+  box-shadow: 0 0 0 3px var(--white), 0 0 0 5px #ffa800;
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -156,11 +156,11 @@ input[type="hidden" i] {
 }
 
 .credit-calculator__result-text {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 19px;
   font-weight: 600;
   fill: #000;
-  opacity: 0.55;
+  opacity: 0.6;
 }
 
 .credit-calculator-info {
@@ -191,4 +191,48 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.credit-calculator-info__list {
+  list-style: none;
+}
+
+.credit-calculator-info__list li {
+  display: flex;
+  align-items: center;
+}
+
+.credit-calculator-info__list li+li {
+  margin-top: 12px;
+}
+
+.credit-calculator-info__list li::before {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 13px;
+  border-radius: 50%;
+}
+
+.credit-calculator-info__list li:nth-child(2)::before {
+  background-color: #FFA800;
+  content: '';
+}
+
+.credit-calculator-info__list li:nth-child(3)::before {
+  background-color: #23319D;
+  content: '';
+}
+
+.credit-calculator-info__value {
+  font-weight: 800;
+}
+
+.credit-calculator-info__comission-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--black);
+}
+.credit-calculator__field+.credit-calculator__field {
+  margin-top: 20px;
 }
