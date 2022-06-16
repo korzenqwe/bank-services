@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import CreditInputs from "./CreditInputs";
-import CreditCircle from "./CreditCircle";
-import CreditInfo from "./CreditInfo";
+import LoanInputs from "./LoanInputs";
+import LoanCircle from "./LoanCircle";
+import LoanInfo from "./LoanInfo";
 
-const CreditForm = () => {
-  const [creditSum, setCreditSum] = useState(3000000);
-  const [creditTerm, setCreditTerm] = useState(60);
-  const [creditRate, setCreditRate] = useState(10);
+const LoanForm = () => {
+  const [loanSum, setloanSum] = useState(50000);
+  const [loanTerm, setloanTerm] = useState(90);
+  const [loanRate, setloanRate] = useState(2.5);
   const chSum = document.querySelector("input[name=sum]");
   const chTerm = document.querySelector("input[name=term]");
   const chRate = document.querySelector("input[name=rate]");
 
-  const changeCreditSumInput = (e) => {
-    if (e.target.value >= 30000000) {
-      setCreditSum(30000000);
+  const changeloanSumInput = (e) => {
+    if (e.target.value >= 100000) {
+      setloanSum(100000);
     } else if (e.target.value < 0) {
-      setCreditSum(0);
-    } else setCreditSum(Number(e.target.value));
+      setloanSum(0);
+    } else setloanSum(Number(e.target.value));
     let value = e.target.value;
     let min = chSum.min;
     let max = chSum.max;
@@ -24,8 +24,8 @@ const CreditForm = () => {
     chSum.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
-  const changeCreditSum = (e) => {
-    setCreditSum(Number(e.target.value));
+  const changeloanSum = (e) => {
+    setloanSum(Number(e.target.value));
     let value = e.target.value;
     let min = e.target.min;
     let max = e.target.max;
@@ -33,12 +33,12 @@ const CreditForm = () => {
     e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
-  const changeCreditTermInput = (e) => {
-    if (e.target.value >= 180) {
-      setCreditTerm(180);
-    } else if (e.target.value < 0) {
-      setCreditTerm(0);
-    } else setCreditTerm(Number(e.target.value));
+  const changeloanTermInput = (e) => {
+    if (e.target.value >= 365) {
+      setloanTerm(365);
+    } else if (e.target.value < 1) {
+      setloanTerm(1);
+    } else setloanTerm(Number(e.target.value));
     let value = e.target.value;
     let min = chTerm.min;
     let max = chTerm.max;
@@ -46,8 +46,8 @@ const CreditForm = () => {
     chTerm.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
-  const changeCreditTerm = (e) => {
-    setCreditTerm(Number(e.target.value));
+  const changeloanTerm = (e) => {
+    setloanTerm(Number(e.target.value));
     let value = e.target.value;
     let min = e.target.min;
     let max = e.target.max;
@@ -55,12 +55,12 @@ const CreditForm = () => {
     e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
-  const changeCreditRateInput = (e) => {
-    if (e.target.value >= 40) {
-      setCreditRate(40);
+  const changeloanRateInput = (e) => {
+    if (e.target.value >= 5) {
+      setloanRate(5);
     } else if (e.target.value < 0) {
-      setCreditRate(0);
-    } else setCreditRate(Number(e.target.value));
+      setloanRate(0);
+    } else setloanRate(Number(e.target.value));
     let value = e.target.value;
     let min = chRate.min;
     let max = chRate.max;
@@ -68,8 +68,8 @@ const CreditForm = () => {
     chRate.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
-  const changeCreditRate = (e) => {
-    setCreditRate(Number(e.target.value));
+  const changeloanRate = (e) => {
+    setloanRate(Number(e.target.value));
     let value = e.target.value;
     let min = e.target.min;
     let max = e.target.max;
@@ -77,41 +77,35 @@ const CreditForm = () => {
     e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
   };
 
-  const percent = creditRate / 100 / 12;
-  const monthPayment =
-    percent === 0
-      ? creditSum / creditTerm
-      : creditSum *
-        (percent + percent / (Math.pow(1 + percent, creditTerm) - 1));
   const totalSum =
-    creditRate === 0
-      ? Math.round(Number(creditSum))
-      : Math.round(Number(monthPayment * creditTerm));
-  const overpaymentSum = totalSum - creditSum;
+    loanRate === 0
+      ? Math.round(Number(loanSum))
+      : Math.round(Number(loanSum) + (loanRate / 100) * loanSum * loanTerm);
+  const overpaymentSum = totalSum - loanSum;
 
   return (
     <>
       <form
-        className="credit-calculator__form"
-        name="credit-calculator-form"
-        data-calculator-type="credit"
+        className="loan-calculator__form"
+        name="loan-calculator-form"
+        data-calculator-type="loan"
       >
-        <CreditInputs
-          changeCreditSumInput={changeCreditSumInput}
-          changeCreditTermInput={changeCreditTermInput}
-          changeCreditRateInput={changeCreditRateInput}
-          changeCreditSum={changeCreditSum}
-          creditSum={creditSum}
-          creditTerm={creditTerm}
-          changeCreditTerm={changeCreditTerm}
-          creditRate={creditRate}
-          changeCreditRate={changeCreditRate}
+        <LoanInputs
+          changeloanSumInput={changeloanSumInput}
+          changeloanTermInput={changeloanTermInput}
+          changeloanRateInput={changeloanRateInput}
+          changeloanSum={changeloanSum}
+          loanSum={loanSum}
+          loanTerm={loanTerm}
+          changeloanTerm={changeloanTerm}
+          loanRate={loanRate}
+          changeloanRate={changeloanRate}
         />
-        <CreditCircle creditSum={creditSum} total={totalSum} />
-        <CreditInfo overpayment={overpaymentSum} creditSum={creditSum} />
+        <LoanCircle loanSum={loanSum} total={totalSum} />
+        <LoanInfo overpayment={overpaymentSum} loanSum={loanSum} />
       </form>
     </>
   );
 };
 
-export default CreditForm;
+export default LoanForm;

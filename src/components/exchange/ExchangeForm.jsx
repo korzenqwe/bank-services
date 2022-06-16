@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ExchangeTitle from "./ExchangeTitle";
 import Courses from "./Courses";
 import Selects from "./Selects";
 import ExchangeInputs from "./ExchangeInputs";
@@ -53,8 +52,6 @@ const ExchangeForm = () => {
 
   return (
     <>
-      <ExchangeTitle />
-
       <Courses rates={rates} />
 
       <Selects
