@@ -108,7 +108,11 @@ const CreditForm = () => {
           changeCreditRate={changeCreditRate}
         />
         <CreditCircle creditSum={creditSum} total={totalSum} />
-        <CreditInfo overpayment={overpaymentSum} creditSum={creditSum} />
+        <CreditInfo
+          overpayment={overpaymentSum}
+          creditSum={creditSum}
+          creditTerm={creditTerm}
+        />
       </form>
     </>
   );

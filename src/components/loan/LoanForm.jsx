@@ -102,7 +102,11 @@ const LoanForm = () => {
           changeloanRate={changeloanRate}
         />
         <LoanCircle loanSum={loanSum} total={totalSum} />
-        <LoanInfo overpayment={overpaymentSum} loanSum={loanSum} />
+        <LoanInfo
+          overpayment={overpaymentSum}
+          loanSum={loanSum}
+          loanTerm={loanTerm}
+        />
       </form>
     </>
   );

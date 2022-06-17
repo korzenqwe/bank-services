@@ -1,12 +1,24 @@
 import React from "react";
 
-const LoanInfo = ({ overpayment, loanSum }) => {
+const LoanInfo = ({ overpayment, loanSum, loanTerm }) => {
+  const date = new Date();
+  const paymentDate = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate() + Number(loanTerm)
+  ).toLocaleString("ru", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  });
   return (
     <div className="loan-calculator-info">
       <ul className="loan-calculator-info__list">
         <li>
           Оплатить до: 
-          <span className="loan-calculator-info__value loan-calculator-info__value--date"></span>
+          <span className="loan-calculator-info__value loan-calculator-info__value--date">
+            {paymentDate}
+          </span>
         </li>
         <li>
           Сумма кредита: 
