@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 const CreditCircle = ({ creditSum, total }) => {
+  
   useEffect(() => {
     const PI = 3.14159265;
     const circleRadius = document

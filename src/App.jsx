@@ -12,7 +12,7 @@ function App() {
       <div className="navbar">
         <div className="navbar__links">
           <Link to="/credit">Кредитный калькулятор</Link>
-          <Link to="/loan">Калькулятор займов</Link>
+          <Link to="/loan">Калькулятор микрозаймов</Link>
           <Link to="/exchange">Конвертер валют</Link>
         </div>
       </div>

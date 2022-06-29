@@ -7,6 +7,17 @@ const CreditForm = () => {
   const [creditSum, setCreditSum] = useState(3000000);
   const [creditTerm, setCreditTerm] = useState(60);
   const [creditRate, setCreditRate] = useState(10);
+  const percent = creditRate / 100 / 12;
+  const monthPayment =
+    percent === 0
+      ? creditSum / creditTerm
+      : creditSum *
+        (percent + percent / (Math.pow(1 + percent, creditTerm) - 1));
+  const totalSum =
+    creditRate === 0
+      ? Math.round(Number(creditSum))
+      : Math.round(Number(monthPayment * creditTerm));
+  const overpaymentSum = totalSum - creditSum;
   const chSum = document.querySelector("input[name=sum]");
   const chTerm = document.querySelector("input[name=term]");
   const chRate = document.querySelector("input[name=rate]");
@@ -21,7 +32,10 @@ const CreditForm = () => {
     let min = chSum.min;
     let max = chSum.max;
     let percentage = ((value - min) / (max - min)) * 100;
-    chSum.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+    chSum.style = `
+    background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%,
+      rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)
+    `;
   };
 
   const changeCreditSum = (e) => {
@@ -30,7 +44,9 @@ const CreditForm = () => {
     let min = e.target.min;
     let max = e.target.max;
     let percentage = ((value - min) / (max - min)) * 100;
-    e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+    e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%,
+      rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)
+      `;
   };
 
   const changeCreditTermInput = (e) => {
@@ -43,7 +59,9 @@ const CreditForm = () => {
     let min = chTerm.min;
     let max = chTerm.max;
     let percentage = ((value - min) / (max - min)) * 100;
-    chTerm.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+    chTerm.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%,
+      rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)
+      `;
   };
 
   const changeCreditTerm = (e) => {
@@ -52,7 +70,9 @@ const CreditForm = () => {
     let min = e.target.min;
     let max = e.target.max;
     let percentage = ((value - min) / (max - min)) * 100;
-    e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+    e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%,
+      rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)
+    `;
   };
 
   const changeCreditRateInput = (e) => {
@@ -65,7 +85,9 @@ const CreditForm = () => {
     let min = chRate.min;
     let max = chRate.max;
     let percentage = ((value - min) / (max - min)) * 100;
-    chRate.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+    chRate.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%,
+      rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)
+    `;
   };
 
   const changeCreditRate = (e) => {
@@ -74,20 +96,10 @@ const CreditForm = () => {
     let min = e.target.min;
     let max = e.target.max;
     let percentage = ((value - min) / (max - min)) * 100;
-    e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%, rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)`;
+    e.target.style = `background: linear-gradient(to right, #ffa800, #ffa800 ${percentage}%,
+      rgba(0, 0, 0, 0.1)  ${percentage}%, rgba(0, 0, 0, 0.1) 100%)
+    `;
   };
-
-  const percent = creditRate / 100 / 12;
-  const monthPayment =
-    percent === 0
-      ? creditSum / creditTerm
-      : creditSum *
-        (percent + percent / (Math.pow(1 + percent, creditTerm) - 1));
-  const totalSum =
-    creditRate === 0
-      ? Math.round(Number(creditSum))
-      : Math.round(Number(monthPayment * creditTerm));
-  const overpaymentSum = totalSum - creditSum;
 
   return (
     <>

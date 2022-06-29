@@ -69,7 +69,7 @@ const CreditInputs = ({
         </div>
         <input
           id="calculator-range-term"
-          className="styled-slider slider-progress range credit-calculator__range"
+          className="range credit-calculator__range"
           type="range"
           name="term"
           data-bind="calculator-input-term"
@@ -103,7 +103,7 @@ const CreditInputs = ({
         </div>
         <input
           id="calculator-range-rate"
-          className="styled-slider slider-progress range credit-calculator__range"
+          className="range credit-calculator__range"
           type="range"
           name="rate"
           min={0}
